@@ -9,8 +9,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.post('/webhook/board', handleBoardWebhook);
+app.all('/webhook/board', handleBoardWebhook);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server running at http://${process.env.HOSTNAME}:${process.env.PORT}/`);
+    console.log(`Server running at ${process.env.APP_URL}`);
 });

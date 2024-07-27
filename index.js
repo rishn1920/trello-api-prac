@@ -57,8 +57,25 @@ function getBoards() {
     });
 }
 
+function listWebhooks() {
+    return fetch(`https://api.trello.com/1/tokens/${process.env.API_TOKEN}/webhooks/?key=${process.env.API_KEY}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        try {
+            response = response.json();
+        } catch (error) {}
+
+        return response;
+    }).catch(error => {
+        console.log(error);
+    });
+}
+
 function createWebhook(idModel) {
-    return fetch(`https://api.trello.com/1/tokens/{APIToken}/webhooks/?key=${process.env.API_KEY}&token=${process.env.API_TOKEN}`, {
+    return fetch(`https://api.trello.com/1/tokens/${process.env.API_TOKEN}/webhooks/?key=${process.env.API_KEY}`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
