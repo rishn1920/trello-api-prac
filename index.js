@@ -116,7 +116,11 @@ export function handleBoardWebhook(req, res) {
         });
     }
 
-    console.log(req);
+    console.log(
+        req.body.action.data,
+        req.body.action.display,
+        req.body.action.memberCreator
+    );
     res.status(200).json({
         status: 'success',
         data: req
